@@ -1,0 +1,1508 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<!-- SEO -->
+<meta name="description" content="Fluxia | Landing pages, sites e hospedagem com automação que direciona seus leads para WhatsApp ou IA, conforme o seu negócio." />
+<meta name="robots" content="index, follow, max-image-preview:large" />
+<link rel="canonical" href="https://www.fluxia.com.br/" />
+<meta name="theme-color" content="#030705" />
+
+<!-- Segurança básica (CSP completa deve ir via header HTTP no servidor) -->
+<meta http-equiv="X-Content-Type-Options" content="nosniff" />
+<meta name="referrer" content="strict-origin-when-cross-origin" />
+
+<link rel="icon" type="image/jpeg" href="logo.jpg" />
+
+<!-- Open Graph -->
+<meta property="og:site_name" content="Fluxia" />
+<meta property="og:title" content="Fluxia | Engenharia de Conversão com IA" />
+<meta property="og:description" content="Landing pages, sites e hospedagem com automação que direciona seus leads para WhatsApp ou IA, conforme o seu negócio." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://www.fluxia.com.br/" />
+<meta property="og:image" content="https://www.fluxia.com.br/assets/og-cover.jpg" />
+<meta property="og:locale" content="pt_BR" />
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Fluxia | Engenharia de Conversão com IA" />
+<meta name="twitter:description" content="Landing pages, sites e hospedagem com automação que direciona seus leads para WhatsApp ou IA, conforme o seu negócio." />
+<meta name="twitter:image" content="https://www.fluxia.com.br/assets/og-cover.jpg" />
+
+<title>Fluxia · Engenharia de Conversão com IA</title>
+
+<!-- Dados estruturados -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Fluxia",
+  "url": "https://www.fluxia.com.br/",
+  "description": "Engenharia de conversão com inteligência artificial: landing pages de alta performance e automação para negócios.",
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "contactType": "customer service",
+    "email": "contato@fluxia.com.br",
+    "availableLanguage": ["Portuguese"]
+  }
+}
+</script>
+
+<!-- Fontes -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:opsz,wght@14..32,300;14..32,600;14..32,800&display=swap" />
+
+<style>
+/* ============================================================
+   1. VARIÁVEIS E RESET
+============================================================ */
+:root {
+  --bg-primary: #030705;
+  --bg-secondary: #07120a;
+  --bg-card: rgba(8, 20, 12, 0.75);
+  --accent-cyan: #00ff88;
+  --accent-cyan-dim: rgba(0, 255, 136, 0.15);
+  --accent-purple: #00b0ff;
+  --accent-green: #00e676;
+  --text-primary: #f0fdf4;
+  --text-muted: #8ca395;
+  --border-glow: rgba(0, 255, 136, 0.25);
+  --font-display: 'Orbitron', sans-serif;
+  --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+  --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 110px; }
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  #particles-canvas { display: none; }
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+summary:focus-visible {
+  outline: 2px solid var(--accent-cyan);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 16px;
+  background: var(--accent-cyan);
+  color: #030705;
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-weight: 700;
+  z-index: 2000;
+  transition: top 0.2s ease;
+}
+.skip-link:focus { top: 16px; }
+
+.visually-hidden {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+}
+
+/* ============================================================
+   2. CANVAS DE PARTÍCULAS
+============================================================ */
+#particles-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* ============================================================
+   3. LAYOUT GERAL
+============================================================ */
+.container {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 24px;
+  position: relative;
+  z-index: 1;
+}
+
+/* ============================================================
+   4. HEADER
+============================================================ */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background: rgba(3, 7, 5, 0.85);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border-bottom: 1px solid rgba(0, 255, 136, 0.08);
+  transition: var(--transition);
+}
+.nav-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100px;
+}
+.logo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+.logo-svg {
+  height: 64px;
+  width: auto;
+  display: block;
+  filter: drop-shadow(0 0 12px rgba(0, 255, 136, 0.35));
+  transition: var(--transition);
+}
+.logo:hover .logo-svg,
+.logo:focus-visible .logo-svg {
+  filter: drop-shadow(0 0 20px rgba(0, 255, 136, 0.6));
+  transform: scale(1.03);
+}
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  list-style: none;
+}
+.nav-links a {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: var(--transition);
+  position: relative;
+}
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--accent-cyan);
+  transition: var(--transition);
+}
+.nav-links a:hover,
+.nav-links a:focus-visible { color: var(--text-primary); }
+.nav-links a:hover::after,
+.nav-links a:focus-visible::after { width: 100%; }
+
+.mobile-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--text-primary);
+  font-size: 2rem;
+  cursor: pointer;
+  line-height: 1;
+}
+
+/* ============================================================
+   5. HERO
+============================================================ */
+.hero {
+  padding: 200px 0 120px;
+  position: relative;
+  text-align: center;
+  background: radial-gradient(ellipse at 30% 50%, rgba(0, 255, 136, 0.06) 0%, transparent 70%);
+}
+.hero-badge {
+  display: inline-block;
+  background: rgba(0, 255, 136, 0.08);
+  border: 1px solid rgba(0, 255, 136, 0.15);
+  border-radius: 100px;
+  padding: 6px 18px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--accent-cyan);
+  margin-bottom: 30px;
+  backdrop-filter: blur(4px);
+}
+.hero h1 {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: clamp(2rem, 5vw, 4rem);
+  line-height: 1.05;
+  margin-bottom: 20px;
+  letter-spacing: -1px;
+}
+.hero h1 .highlight {
+  background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  display: inline-block;
+}
+.typing-cursor {
+  display: inline-block;
+  width: 3px;
+  height: 1.1em;
+  background: var(--accent-cyan);
+  margin-left: 6px;
+  vertical-align: text-bottom;
+  animation: blink 0.8s infinite;
+}
+@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+.hero p {
+  font-size: clamp(1rem, 2.2vw, 1.25rem);
+  color: var(--text-muted);
+  max-width: 720px;
+  margin: 0 auto 48px;
+  font-weight: 300;
+  line-height: 1.7;
+}
+.btn-group { display: flex; flex-wrap: wrap; justify-content: center; gap: 16px; }
+.btn {
+  padding: 16px 40px;
+  border-radius: 60px;
+  font-weight: 700;
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+  transition: var(--transition);
+  text-decoration: none;
+  display: inline-block;
+  letter-spacing: 0.5px;
+  font-family: var(--font-body);
+}
+.btn-primary {
+  background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
+  color: #030705;
+  box-shadow: 0 0 30px rgba(0, 255, 136, 0.3);
+}
+.btn-primary:hover, .btn-primary:focus-visible {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 0 60px rgba(0, 255, 136, 0.5);
+}
+.btn-secondary {
+  background: transparent;
+  color: var(--text-primary);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(4px);
+}
+.btn-secondary:hover, .btn-secondary:focus-visible {
+  background: rgba(0, 255, 136, 0.08);
+  border-color: var(--accent-cyan);
+  transform: translateY(-3px);
+}
+
+/* ============================================================
+   6. SEÇÕES
+============================================================ */
+section { padding: 100px 0; position: relative; }
+.section-label {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.75rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--accent-cyan);
+  margin-bottom: 12px;
+  background: rgba(0, 255, 136, 0.06);
+  padding: 4px 14px;
+  border-radius: 30px;
+  border: 1px solid rgba(0, 255, 136, 0.08);
+}
+.section-title {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  letter-spacing: -1px;
+  margin-bottom: 16px;
+}
+.section-title span {
+  background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+.section-sub { color: var(--text-muted); max-width: 600px; font-size: 1.1rem; margin-bottom: 24px; }
+.section-note {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  font-style: italic;
+  max-width: 600px;
+  margin: 0 auto 60px;
+  opacity: 0.8;
+}
+.text-center { text-align: center; }
+.mx-auto { margin-left: auto; margin-right: auto; }
+
+/* ============================================================
+   7. CARDS
+============================================================ */
+.grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+.card-futurist {
+  background: var(--bg-card);
+  backdrop-filter: blur(8px);
+  border-radius: 20px;
+  padding: 40px 28px;
+  position: relative;
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  transition: var(--transition);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.card-futurist::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: 22px;
+  padding: 1px;
+  background: conic-gradient(from 0deg, transparent, var(--accent-cyan), transparent, var(--accent-purple), transparent);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: var(--transition);
+  pointer-events: none;
+}
+.card-futurist:hover::before { opacity: 1; animation: spin-border 4s linear infinite; }
+@keyframes spin-border { to { transform: rotate(360deg); } }
+.card-futurist:hover {
+  transform: translateY(-8px);
+  border-color: rgba(0, 255, 136, 0.15);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+}
+.card-icon { font-size: 2.6rem; margin-bottom: 20px; display: inline-block; }
+.card-futurist h3 { font-family: var(--font-display); font-weight: 700; font-size: 1.3rem; margin-bottom: 12px; letter-spacing: -0.3px; }
+.card-futurist p { color: var(--text-muted); font-size: 0.95rem; flex: 1; }
+
+/* ============================================================
+   7b. ABAS + CARDS DE FOTO/VÍDEO
+============================================================ */
+.tabs-nav {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 8px 0 50px;
+}
+.tab-btn {
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 0.9rem;
+  letter-spacing: 0.3px;
+  color: var(--text-muted);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 100px;
+  padding: 12px 28px;
+  cursor: pointer;
+  transition: var(--transition);
+}
+.tab-btn:hover { color: var(--text-primary); border-color: rgba(0, 255, 136, 0.25); }
+.tab-btn[aria-selected="true"] {
+  color: #030705;
+  background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
+  border-color: transparent;
+  box-shadow: 0 0 24px rgba(0, 255, 136, 0.25);
+}
+.tab-panel[hidden] { display: none; }
+
+.photo-card, .video-card {
+  background: var(--bg-card);
+  backdrop-filter: blur(8px);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  overflow: hidden;
+  transition: var(--transition);
+  display: flex;
+  flex-direction: column;
+}
+.photo-card:hover, .video-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(0, 255, 136, 0.15);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+}
+.photo-card img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  display: block;
+  border-bottom: 1px solid rgba(0, 255, 136, 0.08);
+  background: #07120a;
+}
+.photo-card figcaption, .video-card figcaption {
+  padding: 24px 24px 0;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.1rem;
+  letter-spacing: -0.2px;
+}
+.photo-card .photo-tag, .video-card .photo-tag {
+  display: inline-block;
+  width: fit-content;
+  margin: 24px 24px 0;
+  background: rgba(0, 255, 136, 0.1);
+  padding: 2px 12px;
+  border-radius: 30px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--accent-cyan);
+}
+.photo-card .photo-tag + figcaption,
+.video-card .photo-tag + figcaption { margin-top: 16px; padding-top: 0; }
+.photo-card p, .video-card p {
+  padding: 12px 24px 28px;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  flex: 1;
+}
+
+.video-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #000;
+  border-bottom: 1px solid rgba(0, 255, 136, 0.08);
+  overflow: hidden;
+}
+.video-wrapper iframe,
+.video-wrapper video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
+
+/* ============================================================
+   8. ESTATÍSTICAS
+============================================================ */
+.stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 40px; margin-top: 40px; }
+.stat-item { text-align: center; }
+.stat-number {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: clamp(2.4rem, 6vw, 3.4rem);
+  background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  line-height: 1;
+}
+.stat-label { color: var(--text-muted); font-size: 0.95rem; margin-top: 6px; font-weight: 500; }
+
+/* ============================================================
+   10. CTA
+============================================================ */
+.cta-box {
+  background: var(--bg-card);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(0, 255, 136, 0.1);
+  border-radius: 30px;
+  padding: 80px 40px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.cta-box::after {
+  content: '';
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(0, 255, 136, 0.06), transparent 70%);
+  top: -100px;
+  right: -100px;
+  border-radius: 50%;
+  pointer-events: none;
+}
+.cta-box h2 { font-family: var(--font-display); font-weight: 900; font-size: clamp(1.8rem, 4vw, 2.5rem); margin-bottom: 16px; }
+.cta-box p { color: var(--text-muted); max-width: 600px; margin: 0 auto 40px; font-size: 1.1rem; }
+
+/* ============================================================
+   PROCESSO
+============================================================ */
+.step-number {
+  font-family: var(--font-display);
+  font-size: 3.5rem;
+  font-weight: 900;
+  color: transparent;
+  -webkit-text-stroke: 2px rgba(0, 255, 136, 0.3);
+  margin-bottom: 16px;
+  line-height: 1;
+  transition: var(--transition);
+}
+.card-futurist:hover .step-number {
+  background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: 0;
+  transform: scale(1.05) translateX(10px);
+}
+
+/* ============================================================
+   FAQ
+============================================================ */
+.faq-item {
+  background: var(--bg-card);
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-bottom: 12px;
+  border: 1px solid rgba(255,255,255,0.04);
+}
+.faq-item summary {
+  cursor: pointer;
+  outline: none;
+  font-weight: 700;
+  color: var(--text-primary);
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item summary::after {
+  content: '+';
+  color: var(--accent-cyan);
+  font-size: 1.4rem;
+  line-height: 1;
+  transition: transform var(--transition);
+  flex-shrink: 0;
+}
+.faq-item[open] summary::after { transform: rotate(45deg); }
+.faq-item p { color: var(--text-muted); margin-top: 16px; font-size: 0.95rem; }
+.faq-item:hover { border-color: rgba(0, 255, 136, 0.2); }
+
+/* ============================================================
+   FORMULÁRIO
+============================================================ */
+#form-contato input::placeholder,
+#form-contato textarea::placeholder { color: var(--text-muted); opacity: 0.7; }
+#form-contato select {
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2300ff88' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  background-size: 20px;
+  padding-right: 48px;
+}
+#form-contato select option { background: #07120a; color: var(--text-primary); }
+#form-contato input,
+#form-contato select,
+#form-contato textarea {
+  padding: 16px 20px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 12px;
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  width: 100%;
+}
+#form-contato input:invalid:not(:placeholder-shown),
+#form-contato select:invalid:not(:focus) { border-color: rgba(255, 107, 107, 0.4); }
+
+.honeypot {
+  position: absolute !important;
+  left: -9999px !important;
+  width: 1px !important;
+  height: 1px !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+.form-feedback {
+  text-align: center;
+  padding: 12px;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-top: 8px;
+  display: none;
+}
+.form-feedback.success {
+  display: block;
+  background: rgba(0, 255, 136, 0.1);
+  border: 1px solid rgba(0, 255, 136, 0.3);
+  color: var(--accent-cyan);
+}
+.form-feedback.error {
+  display: block;
+  background: rgba(255, 107, 107, 0.1);
+  border: 1px solid rgba(255, 107, 107, 0.3);
+  color: #ff6b6b;
+}
+
+/* ============================================================
+   11. FOOTER
+============================================================ */
+footer {
+  background: rgba(3, 7, 5, 0.9);
+  border-top: 1px solid rgba(255, 255, 255, 0.03);
+  padding: 40px 0;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 1rem;
+  position: relative;
+  z-index: 1;
+  backdrop-filter: blur(8px);
+}
+footer .legal { font-size: 0.9rem; opacity: 0.8; margin-top: 8px; }
+
+/* ============================================================
+   12. REVEAL — com fallback garantido via CSS
+============================================================ */
+.reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.8s ease, transform 0.8s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* Fallback: se o JS não rodar, mostra tudo após 3s via animação CSS */
+@keyframes revealFallback {
+  to { opacity: 1; transform: translateY(0); }
+}
+.reveal { animation: revealFallback 0.01s ease 3s forwards; }
+
+/* ============================================================
+   13. RESPONSIVO
+============================================================ */
+@media (max-width: 768px) {
+  .mobile-toggle { display: block; }
+  .nav-wrapper { height: 90px; }
+  .logo-svg { height: 52px; }
+  .nav-links {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 90px;
+    left: 0;
+    width: 100%;
+    background: rgba(3, 7, 5, 0.98);
+    backdrop-filter: blur(16px);
+    padding: 30px 0;
+    border-bottom: 1px solid rgba(0, 255, 136, 0.05);
+    gap: 20px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-20px);
+    transition: all 0.4s ease;
+    pointer-events: none;
+  }
+  .nav-links.active { opacity: 1; visibility: visible; transform: translateY(0); pointer-events: auto; }
+  .hero { padding: 150px 0 90px; }
+  .btn { padding: 14px 28px; font-size: 0.9rem; }
+  .cta-box { padding: 40px 20px; }
+  .tab-btn { padding: 10px 20px; font-size: 0.8rem; }
+  #form-contato > div { grid-template-columns: 1fr !important; }
+  #form-contato button { width: 100%; min-width: 0 !important; }
+}
+@media (max-width: 480px) {
+  .logo-svg { height: 44px; }
+}
+</style>
+</head>
+<body>
+
+<a href="#main" class="skip-link">Pular para o conteúdo</a>
+
+<canvas id="particles-canvas" aria-hidden="true"></canvas>
+
+<header>
+  <div class="container nav-wrapper">
+    <a href="#" class="logo" aria-label="Fluxia - Início">
+      <svg class="logo-svg" viewBox="0 0 820 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Fluxia">
+        <defs>
+          <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#00ff88"/>
+            <stop offset="100%" stop-color="#00b0ff"/>
+          </linearGradient>
+          <filter id="logoGlow" x="-60%" y="-60%" width="220%" height="220%">
+            <feGaussianBlur stdDeviation="5" result="blur"/>
+            <feMerge>
+              <feMergeNode in="blur"/>
+              <feMergeNode in="SourceGraphic"/>
+            </feMerge>
+          </filter>
+        </defs>
+        <rect width="820" height="220" rx="24" fill="#030705"/>
+        <g filter="url(#logoGlow)">
+          <path d="M 60 110 A 55 55 0 0 1 170 110 A 55 55 0 0 1 60 110"
+                fill="none" stroke="url(#logoGrad)" stroke-width="9" stroke-linecap="round"/>
+          <path d="M 85 110 L 145 110"
+                fill="none" stroke="url(#logoGrad)" stroke-width="9" stroke-linecap="round"/>
+          <path d="M 130 88 L 152 110 L 130 132"
+                fill="none" stroke="url(#logoGrad)" stroke-width="9"
+                stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="115" cy="110" r="6" fill="#00ff88" opacity="0.9"/>
+        </g>
+        <text x="210" y="138" font-family="'Orbitron', 'Arial Black', sans-serif"
+              font-weight="900" font-size="72" letter-spacing="4"
+              fill="url(#logoGrad)" filter="url(#logoGlow)">FLUXIA</text>
+      </svg>
+    </a>
+    <button class="mobile-toggle" id="mobileToggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="navLinks">☰</button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#solucoes">Soluções</a></li>
+      <li><a href="#caminho">Seu Momento</a></li>
+      <li><a href="#exemplos">Exemplos</a></li>
+      <li><a href="#processo">Método</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#contato">Contato</a></li>
+    </ul>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-badge">⚡ Engenharia De Converter Visitantes Em Clientes</div>
+      <h1>
+        Transforme Visitantes em<br />
+        <span class="highlight">Possíveis Lucros Exponenciais</span>
+        <span class="typing-cursor" aria-hidden="true"></span>
+      </h1>
+      <p>
+        Criamos landing pages e sites, hospedamos tudo e conectamos
+        ao canal certo — WhatsApp ou IA — conforme o seu negócio.
+      </p>
+      <div class="btn-group">
+        <a href="#contato" class="btn btn-primary" data-whatsapp="Olá! Vi o site da Fluxia e quero saber mais.">▶ Falar com a Fluxia</a>
+        <a href="#solucoes" class="btn btn-secondary">Explorar Tecnologia</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOLUÇÕES -->
+  <section id="solucoes">
+    <div class="container">
+      <div class="text-center">
+        <span class="section-label">⚙️ O que fazemos</span>
+        <h2 class="section-title">Do primeiro clique ao <span>Atendimento Certo</span></h2>
+        <p class="section-sub mx-auto">
+          Cinco frentes, um único objetivo: transformar visitantes em clientes.
+        </p>
+      </div>
+      <div class="grid-3">
+        <div class="card-futurist reveal">
+          <div class="card-icon" aria-hidden="true">🧠</div>
+          <h3>Landing Pages</h3>
+          <p>Páginas rápidas e otimizadas para campanhas, focadas em transformar visitante em lead.</p>
+        </div>
+        <div class="card-futurist reveal">
+          <div class="card-icon" aria-hidden="true">🖥️</div>
+          <h3>Sites Institucionais</h3>
+          <p>Presença digital completa para o seu negócio, além da campanha pontual de uma landing page.</p>
+        </div>
+        <div class="card-futurist reveal">
+          <div class="card-icon" aria-hidden="true">☁️</div>
+          <h3>Hospedagem Gerenciada</h3>
+          <p>Domínio, hospedagem e manutenção cuidados por nós — você não precisa lidar com a parte técnica.</p>
+        </div>
+        <div class="card-futurist reveal">
+          <div class="card-icon" aria-hidden="true">🔀</div>
+          <h3>Roteamento Inteligente de Leads</h3>
+          <p>Cada lead é direcionado para o canal certo — WhatsApp com sua equipe ou atendimento automatizado por IA.</p>
+        </div>
+        <div class="card-futurist reveal">
+          <div class="card-icon" aria-hidden="true">🎯</div>
+          <h3>Tráfego Pago</h3>
+          <p>Campanhas no Google Ads e Meta Ads. Injetamos um volume previsível de clientes qualificados com foco em ROI.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MOMENTO -->
+  <section id="caminho" style="background: rgba(7, 18, 10, 0.4);">
+    <div class="container">
+      <div class="text-center">
+        <span class="section-label">🎯 Direcione seu objetivo</span>
+        <h2 class="section-title">Qual é o seu <span>Momento</span>?</h2>
+        <p class="section-sub mx-auto">
+          Nem todo negócio precisa da mesma solução. Identifique onde você está agora.
+        </p>
+      </div>
+      <div class="grid-3" style="grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));">
+
+        <div class="card-futurist reveal">
+          <div class="card-icon" aria-hidden="true">🚀</div>
+          <h3>Campanha Específica</h3>
+          <p style="margin-bottom: 16px;">Você já tem tráfego ou vai investir em anúncios para <strong>um serviço ou oferta específica</strong>.</p>
+          <ul style="color: var(--text-muted); font-size: 0.9rem; padding-left: 20px; margin-bottom: 24px;">
+            <li>Foco total em conversão</li>
+            <li>Uma única ação: agendar, comprar ou falar no WhatsApp</li>
+            <li>Sem menu de navegação — o visitante só pode fazer o que você quer</li>
+          </ul>
+          <a href="#contato" class="btn btn-secondary" style="margin-top: auto;">Quero uma Landing Page</a>
+        </div>
+
+        <div class="card-futurist reveal" style="border-color: rgba(0, 255, 136, 0.2);">
+          <div class="card-icon" aria-hidden="true">🏢</div>
+          <h3>Presença Digital Completa</h3>
+          <p style="margin-bottom: 16px;">Seu negócio precisa de <strong>uma casa digital</strong> — com informações, serviços e autoridade.</p>
+          <ul style="color: var(--text-muted); font-size: 0.9rem; padding-left: 20px; margin-bottom: 24px;">
+            <li>Múltiplas páginas e serviços</li>
+            <li>Construção de marca e SEO</li>
+            <li>Base para todas as suas campanhas futuras</li>
+          </ul>
+          <a href="#contato" class="btn btn-primary" style="margin-top: auto;">Quero um Site Completo</a>
+        </div>
+
+        <div class="card-futurist reveal">
+          <div class="card-icon" aria-hidden="true">🤔</div>
+          <h3>Ainda não sei</h3>
+          <p style="margin-bottom: 16px;">Você sabe que precisa de presença digital, mas não tem clareza do que faz mais sentido para o seu negócio.</p>
+          <ul style="color: var(--text-muted); font-size: 0.9rem; padding-left: 20px; margin-bottom: 24px;">
+            <li>Conversa estratégica gratuita</li>
+            <li>Diagnóstico do seu momento</li>
+            <li>Recomendação honesta — sem empurrar serviço</li>
+          </ul>
+          <a href="#contato" class="btn btn-secondary" style="margin-top: auto;">Quero ajuda para decidir</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- RESULTADO -->
+  <section id="resultado">
+    <div class="container">
+      <div class="text-center">
+        <span class="section-label">📊 Prova em números</span>
+        <h2 class="section-title">O que muda na <span>prática</span></h2>
+        <p class="section-sub mx-auto">
+          Um exemplo real do impacto que uma página bem construída faz.
+        </p>
+      </div>
+
+      <div class="grid-3" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); margin-top: 40px;">
+        <div class="stat-item reveal">
+          <div class="stat-number">-41%</div>
+          <div class="stat-label">Custo por lead</div>
+        </div>
+        <div class="stat-item reveal">
+          <div class="stat-number">3.2x</div>
+          <div class="stat-label">ROI em 90 dias</div>
+        </div>
+        <div class="stat-item reveal">
+          <div class="stat-number">24/7</div>
+          <div class="stat-label">Atendimento automatizado</div>
+        </div>
+      </div>
+
+      <p class="section-note text-center mx-auto" style="margin-top: 32px;">
+        Resultados variam conforme segmento, oferta e investimento em mídia.
+      </p>
+    </div>
+  </section>
+
+  <!-- EXEMPLOS -->
+  <section id="exemplos" style="background: rgba(7, 18, 10, 0.4);">
+    <div class="container">
+      <div class="text-center">
+        <span class="section-label">📌 Protótipos</span>
+        <h2 class="section-title">Modelos de <span>Conversão</span></h2>
+        <p class="section-sub mx-auto">
+          Interfaces e demonstrações desenvolvidas para nichos específicos, prontas para serem personalizadas com seus dados.
+        </p>
+      </div>
+
+      <div class="tabs-nav" role="tablist" aria-label="Modelos de conversão">
+        <button type="button" class="tab-btn" id="tabbtn-fotos" data-tab="fotos" role="tab" aria-selected="true" aria-controls="tab-fotos">📸 Galeria de Modelos</button>
+        <button type="button" class="tab-btn" id="tabbtn-videos" data-tab="videos" role="tab" aria-selected="false" aria-controls="tab-videos" tabindex="-1">🎬 Vídeos</button>
+      </div>
+
+      <!-- ABA FOTOS -->
+      <div class="tab-panel" id="tab-fotos" role="tabpanel" aria-labelledby="tabbtn-fotos">
+        <div class="grid-3">
+          <figure class="photo-card reveal">
+            <img src="https://placehold.co/600x450/07120a/00ff88?font=montserrat&text=Cl%C3%ADnica+Odontol%C3%B3gica" alt="Prévia do modelo de landing page para clínica odontológica" loading="lazy" width="600" height="450" decoding="async" />
+            <span class="photo-tag">Saúde</span>
+            <figcaption>Clínica Odontológica</figcaption>
+            <p>Modelo de agendamento com triagem inicial e fluxo humanizado, pensado para reduzir faltas e qualificar o paciente.</p>
+          </figure>
+          <figure class="photo-card reveal">
+            <img src="https://placehold.co/600x450/07120a/00b0ff?font=montserrat&text=Est%C3%A9tica+Estrat%C3%A9gica" alt="Prévia do modelo de landing page para clínica de estética" loading="lazy" width="600" height="450" decoding="async" />
+            <span class="photo-tag">Estética</span>
+            <figcaption>Estética Estratégica</figcaption>
+            <p>Design de autoridade com captura de leads e integração direta com a equipe de vendas.</p>
+          </figure>
+          <figure class="photo-card reveal">
+            <img src="https://placehold.co/600x450/07120a/00ff88?font=montserrat&text=Im%C3%B3veis+Premium" alt="Prévia do modelo de landing page para o setor imobiliário" loading="lazy" width="600" height="450" decoding="async" />
+            <span class="photo-tag">Imobiliário</span>
+            <figcaption>Imóveis Premium</figcaption>
+            <p>Modelo com galeria imersiva e gatilhos de urgência, construído para gerar leads qualificados.</p>
+          </figure>
+        </div>
+      </div>
+
+      <!-- ABA VÍDEOS -->
+      <div class="tab-panel" id="tab-videos" role="tabpanel" aria-labelledby="tabbtn-videos" hidden>
+        <div class="grid-3">
+
+          <!-- ============================================================
+               VÍDEO 1 — SUBSTITUA "VIDEO_ID_1" PELO ID REAL DO YOUTUBE
+               Exemplo: youtube.com/watch?v=dQw4w9WgXcQ → use dQw4w9WgXcQ
+          ============================================================ -->
+          <figure class="video-card reveal">
+            <div class="video-wrapper">
+              <iframe
+                src="https://www.youtube-nocookie.com/embed/VIDEO_ID_1?rel=0&hl=pt-BR"
+                title="Demonstração — Landing Page Odontológica"
+                loading="lazy"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen></iframe>
+            </div>
+            <span class="photo-tag">Saúde</span>
+            <figcaption>Demonstração · Odontologia</figcaption>
+            <p>Veja em 40 segundos como o fluxo de agendamento funciona na prática, do clique ao WhatsApp da recepção.</p>
+          </figure>
+
+          <!-- VÍDEO 2 — SUBSTITUA "VIDEO_ID_2" PELO ID REAL -->
+          <figure class="video-card reveal">
+            <div class="video-wrapper">
+              <iframe
+                src="https://www.youtube-nocookie.com/embed/VIDEO_ID_2?rel=0&hl=pt-BR"
+                title="Demonstração — Landing Page Estética"
+                loading="lazy"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen></iframe>
+            </div>
+            <span class="photo-tag">Estética</span>
+            <figcaption>Demonstração · Estética</figcaption>
+            <p>Tour pela página de captura com foco em procedimentos de ticket alto e integração direta com a equipe comercial.</p>
+          </figure>
+
+          <!-- VÍDEO 3 — SUBSTITUA "VIDEO_ID_3" PELO ID REAL -->
+          <figure class="video-card reveal">
+            <div class="video-wrapper">
+              <iframe
+                src="https://www.youtube-nocookie.com/embed/VIDEO_ID_3?rel=0&hl=pt-BR"
+                title="Demonstração — Landing Page Imobiliária"
+                loading="lazy"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen></iframe>
+            </div>
+            <span class="photo-tag">Imobiliário</span>
+            <figcaption>Demonstração · Imóveis Premium</figcaption>
+            <p>Galeria imersiva, gatilhos de urgência e captura qualificada de leads prontos para agendar visita.</p>
+          </figure>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESSO -->
+  <section id="processo">
+    <div class="container">
+      <div class="text-center">
+        <span class="section-label">⚙️ Método Validado</span>
+        <h2 class="section-title">Engenharia em <span>3 Etapas</span></h2>
+        <p class="section-sub mx-auto">
+          Aplicamos uma arquitetura lógica para transformar sua presença digital.
+        </p>
+      </div>
+
+      <div class="grid-3">
+        <div class="card-futurist reveal">
+          <div class="step-number" aria-hidden="true">01</div>
+          <h3>Mapeamento Estratégico</h3>
+          <p>Analisamos seu modelo de negócios, seu ticket médio e as dores do seu cliente para desenhar a oferta irresistível e a estrutura do funil.</p>
+        </div>
+        <div class="card-futurist reveal">
+          <div class="step-number" aria-hidden="true">02</div>
+          <h3>Arquitetura &amp; IA</h3>
+          <p>Desenvolvemos sua Landing Page de alta velocidade e configuramos a inteligência artificial ou o WhatsApp para o roteamento e triagem.</p>
+        </div>
+        <div class="card-futurist reveal">
+          <div class="step-number" aria-hidden="true">03</div>
+          <h3>Injeção de Tração</h3>
+          <p>Com a máquina de vendas montada, o sistema entra no ar pronto para receber tráfego qualificado e converter visitantes em clientes 24/7.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" style="background: rgba(7, 18, 10, 0.4);">
+    <div class="container">
+      <div class="text-center">
+        <span class="section-label">❓ Tire suas dúvidas</span>
+        <h2 class="section-title">Perguntas <span>Frequentes</span></h2>
+        <p class="section-sub mx-auto">
+          O que os clientes costumam perguntar antes de começar.
+        </p>
+      </div>
+
+      <div style="max-width: 800px; margin: 40px auto 0;">
+
+        <details class="faq-item reveal" name="faq">
+          <summary>Quanto tempo leva para minha página ficar pronta?</summary>
+          <p>Uma landing page focada em conversão fica pronta em <strong>5 a 10 dias úteis</strong>, dependendo da complexidade do seu negócio e da agilidade na entrega dos materiais (fotos, textos, informações). Sites institucionais completos podem levar de 2 a 4 semanas.</p>
+        </details>
+
+        <details class="faq-item reveal" name="faq">
+          <summary>Vocês fazem apenas o site ou também gerenciam o tráfego?</summary>
+          <p>Fazemos as duas coisas. Muitos clientes começam apenas com a página e depois contratam a gestão de tráfego. <strong>O ideal é que as duas frentes estejam alinhadas</strong> — uma página construída para converter e uma campanha que traz o público certo.</p>
+        </details>
+
+        <details class="faq-item reveal" name="faq">
+          <summary>Como funciona o roteamento para WhatsApp ou IA?</summary>
+          <p>Depende do seu tipo de negócio. Se você tem uma equipe comercial pronta para atender, configuramos o direcionamento para o WhatsApp da equipe. Se prefere automatizar o primeiro contato (ou atender fora do horário comercial), configuramos uma IA que faz a triagem inicial e depois transfere para um humano quando necessário.</p>
+        </details>
+
+        <details class="faq-item reveal" name="faq">
+          <summary>Preciso já ter logo, textos e fotos?</summary>
+          <p>Não necessariamente. Se você não tiver materiais prontos, ajudamos a estruturar os textos e orientamos sobre as fotos necessárias. <strong>O importante é que o conteúdo final seja verdadeiro e reflita o seu negócio.</strong></p>
+        </details>
+
+        <details class="faq-item reveal" name="faq">
+          <summary>E se eu quiser mudar algo depois que o site estiver no ar?</summary>
+          <p>Oferecemos <strong>hospedagem gerenciada com manutenção</strong>, que inclui pequenos ajustes e atualizações. Mudanças estruturais ou novas páginas podem ser solicitadas à parte.</p>
+        </details>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTATO -->
+  <section id="contato" style="padding: 100px 0;">
+    <div class="container">
+      <div class="cta-box reveal" style="text-align: left; max-width: 900px; margin: 0 auto;">
+        <div class="text-center" style="margin-bottom: 40px;">
+          <h2 style="margin-bottom: 12px;">Vamos <span style="background:linear-gradient(135deg,var(--accent-cyan),var(--accent-purple));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;">conversar</span></h2>
+          <p style="color: var(--text-muted); max-width: 500px; margin: 0 auto;">
+            Preencha os dados abaixo e entraremos em contato pelo WhatsApp ou e-mail para entender seu momento.
+          </p>
+        </div>
+
+        <form id="form-contato" novalidate style="display: grid; gap: 20px;">
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+            <label class="visually-hidden" for="nome">Seu nome</label>
+            <input id="nome" type="text" name="nome" placeholder="Seu nome" required autocomplete="name" maxlength="80" />
+
+            <label class="visually-hidden" for="whatsapp">WhatsApp</label>
+            <input id="whatsapp" type="tel" name="whatsapp" placeholder="WhatsApp (com DDD)" required autocomplete="tel" inputmode="tel" maxlength="20" />
+          </div>
+
+          <label class="visually-hidden" for="email">E-mail</label>
+          <input id="email" type="email" name="email" placeholder="Seu melhor e-mail" required autocomplete="email" maxlength="120" />
+
+          <label class="visually-hidden" for="objetivo">Objetivo</label>
+          <select id="objetivo" name="objetivo" required>
+            <option value="" disabled selected>Qual é o seu principal objetivo agora?</option>
+            <option value="landing">Quero uma Landing Page para uma campanha</option>
+            <option value="site">Preciso de um Site Institucional completo</option>
+            <option value="trafego">Já tenho site e preciso de Tráfego Pago</option>
+            <option value="duvida">Ainda estou decidindo — quero orientação</option>
+          </select>
+
+          <label class="visually-hidden" for="segmento">Segmento</label>
+          <select id="segmento" name="segmento" required>
+            <option value="" disabled selected>Qual é o seu segmento?</option>
+            <option value="saude">Saúde (clínica, odonto, etc.)</option>
+            <option value="estetica">Estética e Beleza</option>
+            <option value="imobiliaria">Imobiliário</option>
+            <option value="servicos">Serviços Locais</option>
+            <option value="juridico">Advocacia / Consultoria</option>
+            <option value="outro">Outro</option>
+          </select>
+
+          <label class="visually-hidden" for="mensagem">Mensagem</label>
+          <textarea id="mensagem" name="mensagem" rows="3" placeholder="Conte um pouco sobre o que você precisa (opcional)" maxlength="1000"></textarea>
+
+          <div class="honeypot" aria-hidden="true">
+            <label for="website">Não preencha este campo</label>
+            <input id="website" type="text" name="website" tabindex="-1" autocomplete="off" />
+          </div>
+
+          <button type="submit" class="btn btn-primary" style="justify-self: center; min-width: 280px;">▶ Enviar e falar no WhatsApp</button>
+
+          <div class="form-feedback" id="formFeedback" role="status" aria-live="polite"></div>
+        </form>
+
+        <p style="text-align: center; color: var(--text-muted); font-size: 0.8rem; margin-top: 20px; opacity: 0.7;">
+          Ao enviar, você será redirecionado para o WhatsApp com os dados preenchidos. Também poderemos entrar em contato pelo e-mail informado.
+        </p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container">
+    <p>© <span id="ano"></span> Fluxia · Engenharia de Conversão</p>
+    <p class="legal">Contato: contato@fluxia.com.br</p>
+  </div>
+</footer>
+
+<script>
+(function () {
+  'use strict';
+
+  document.addEventListener('DOMContentLoaded', function () {
+
+    // ==========================================================
+    // 1. ANO NO RODAPÉ
+    // ==========================================================
+    const anoEl = document.getElementById('ano');
+    if (anoEl) anoEl.textContent = new Date().getFullYear();
+
+    // ==========================================================
+    // 2. MENU MOBILE
+    // ==========================================================
+    const toggle = document.getElementById('mobileToggle');
+    const navLinks = document.getElementById('navLinks');
+    if (toggle && navLinks) {
+      toggle.addEventListener('click', () => {
+        const isOpen = navLinks.classList.toggle('active');
+        toggle.setAttribute('aria-expanded', String(isOpen));
+        toggle.setAttribute('aria-label', isOpen ? 'Fechar menu' : 'Abrir menu');
+      });
+      navLinks.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          navLinks.classList.remove('active');
+          toggle.setAttribute('aria-expanded', 'false');
+          toggle.setAttribute('aria-label', 'Abrir menu');
+        });
+      });
+    }
+
+    // ==========================================================
+    // 3. ABAS (Fotos + Vídeos)
+    // ==========================================================
+    const tabBtns = document.querySelectorAll('.tab-btn');
+    const tabPanels = document.querySelectorAll('.tab-panel');
+    tabBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        tabBtns.forEach(b => {
+          b.classList.remove('active');
+          b.setAttribute('aria-selected', 'false');
+          b.tabIndex = -1;
+        });
+        tabPanels.forEach(p => { p.hidden = true; });
+
+        btn.classList.add('active');
+        btn.setAttribute('aria-selected', 'true');
+        btn.tabIndex = 0;
+        const panel = document.getElementById('tab-' + btn.dataset.tab);
+        if (panel) {
+          panel.hidden = false;
+          panel.querySelectorAll('.reveal').forEach(el => el.classList.add('visible'));
+        }
+      });
+    });
+
+    // ==========================================================
+    // 4. SCROLL REVEAL — com fallback garantido
+    // ==========================================================
+    const revealElements = document.querySelectorAll('.reveal');
+
+    // Fallback imediato: qualquer elemento já visível na viewport aparece
+    revealElements.forEach(el => {
+      const rect = el.getBoundingClientRect();
+      if (rect.top < window.innerHeight * 0.95) {
+        el.classList.add('visible');
+      }
+    });
+
+    // Observer para o restante
+    if ('IntersectionObserver' in window) {
+      const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+      revealElements.forEach(el => revealObserver.observe(el));
+    } else {
+      // Navegador antigo: mostra tudo
+      revealElements.forEach(el => el.classList.add('visible'));
+    }
+
+    // Segurança extra: após 2s, força visibilidade em tudo que sobrou
+    setTimeout(() => {
+      document.querySelectorAll('.reveal:not(.visible)').forEach(el => {
+        el.classList.add('visible');
+      });
+    }, 2000);
+
+    // ==========================================================
+    // 5. PARTÍCULAS
+    // ==========================================================
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!prefersReducedMotion) {
+      const canvas = document.getElementById('particles-canvas');
+      if (canvas) {
+        const ctx = canvas.getContext('2d', { alpha: true });
+        let width, height;
+        let particles = [];
+        let animationId = null;
+        let resizeTimer = null;
+
+        const PARTICLE_COUNT = window.innerWidth < 768 ? 24 : 55;
+        const MAX_DIST = 120;
+
+        function resizeCanvas() {
+          width = canvas.width = window.innerWidth;
+          height = canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', () => {
+          clearTimeout(resizeTimer);
+          resizeTimer = setTimeout(resizeCanvas, 150);
+        }, { passive: true });
+        resizeCanvas();
+
+        class Particle {
+          constructor() { this.reset(); }
+          reset() {
+            this.x = Math.random() * width;
+            this.y = Math.random() * height;
+            this.size = Math.random() * 2 + 0.8;
+            this.speedX = (Math.random() - 0.5) * 0.6;
+            this.speedY = (Math.random() - 0.5) * 0.6;
+            this.opacity = Math.random() * 0.6 + 0.2;
+          }
+          update() {
+            this.x += this.speedX;
+            this.y += this.speedY;
+            if (this.x < 0 || this.x > width) this.speedX *= -1;
+            if (this.y < 0 || this.y > height) this.speedY *= -1;
+          }
+          draw() {
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+            ctx.fillStyle = 'rgba(0, 255, 136, ' + this.opacity + ')';
+            ctx.fill();
+          }
+        }
+        for (let i = 0; i < PARTICLE_COUNT; i++) particles.push(new Particle());
+
+        let mouse = { x: null, y: null };
+        canvas.addEventListener('mousemove', (e) => {
+          mouse.x = e.clientX;
+          mouse.y = e.clientY;
+        }, { passive: true });
+        canvas.addEventListener('mouseleave', () => { mouse.x = null; mouse.y = null; }, { passive: true });
+
+        function drawLines() {
+          for (let i = 0; i < particles.length; i++) {
+            for (let j = i + 1; j < particles.length; j++) {
+              const dx = particles[i].x - particles[j].x;
+              const dy = particles[i].y - particles[j].y;
+              const dist = Math.sqrt(dx * dx + dy * dy);
+              if (dist < MAX_DIST) {
+                const alpha = (1 - dist / MAX_DIST) * 0.5;
+                ctx.beginPath();
+                ctx.moveTo(particles[i].x, particles[i].y);
+                ctx.lineTo(particles[j].x, particles[j].y);
+                ctx.strokeStyle = 'rgba(0, 255, 136, ' + alpha + ')';
+                ctx.lineWidth = 0.5;
+                ctx.stroke();
+              }
+            }
+          }
+          if (mouse.x !== null && mouse.y !== null) {
+            particles.forEach(p => {
+              const dx = p.x - mouse.x;
+              const dy = p.y - mouse.y;
+              const dist = Math.sqrt(dx * dx + dy * dy);
+              if (dist < MAX_DIST * 1.2) {
+                const alpha = (1 - dist / (MAX_DIST * 1.2)) * 0.4;
+                ctx.beginPath();
+                ctx.moveTo(p.x, p.y);
+                ctx.lineTo(mouse.x, mouse.y);
+                ctx.strokeStyle = 'rgba(0, 176, 255, ' + alpha + ')';
+                ctx.lineWidth = 0.8;
+                ctx.stroke();
+              }
+            });
+          }
+        }
+
+        function animateParticles() {
+          ctx.clearRect(0, 0, width, height);
+          particles.forEach(p => { p.update(); p.draw(); });
+          drawLines();
+          animationId = requestAnimationFrame(animateParticles);
+        }
+        animateParticles();
+
+        document.addEventListener('visibilitychange', () => {
+          if (document.hidden) {
+            cancelAnimationFrame(animationId);
+          } else {
+            animationId = requestAnimationFrame(animateParticles);
+          }
+        });
+      }
+    }
+
+    // ==========================================================
+    // 6. WHATSAPP — CONFIGURAÇÃO (mantido como estava)
+    // ==========================================================
+    const _p = [53, 53, 56, 49, 57, 57, 53, 50, 56, 52, 51, 49, 53]
+      .map(c => String.fromCharCode(c)).join('');
+    const WHATSAPP_NUMBER = _p;
+
+    let lastOpen = 0;
+    const OPEN_COOLDOWN = 1200;
+
+    function buildWhatsAppURL(text) {
+      const numero = String(WHATSAPP_NUMBER).replace(/\D/g, '');
+      if (!/^\d{10,15}$/.test(numero)) {
+        console.error('Número de WhatsApp inválido.');
+        return null;
+      }
+      return 'https://wa.me/' + numero + '?text=' + encodeURIComponent(text);
+    }
+
+    function openWhatsApp(text) {
+      const now = Date.now();
+      if (now - lastOpen < OPEN_COOLDOWN) return true;
+      lastOpen = now;
+
+      const url = buildWhatsAppURL(text);
+      if (!url) return false;
+
+      const isMobile = /Android|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i.test(navigator.userAgent);
+      if (isMobile) {
+        window.location.assign(url);
+        return true;
+      }
+      const win = window.open(url, '_blank', 'noopener,noreferrer');
+      if (win) return true;
+
+      window.location.assign(url);
+      return false;
+    }
+
+    document.querySelectorAll('[data-whatsapp]').forEach(el => {
+      el.addEventListener('click', (e) => {
+        e.preventDefault();
+        openWhatsApp(el.getAttribute('data-whatsapp'));
+      });
+    });
+
+    // ==========================================================
+    // 7. FORMULÁRIO → WHATSAPP
+    // ==========================================================
+    const formContato = document.getElementById('form-contato');
+    const feedback = document.getElementById('formFeedback');
+
+    const objetivoTextos = {
+      landing: 'Quero uma Landing Page para uma campanha',
+      site: 'Preciso de um Site Institucional completo',
+      trafego: 'Já tenho site e preciso de Tráfego Pago',
+      duvida: 'Ainda estou decidindo — quero orientação'
+    };
+    const segmentoTextos = {
+      saude: 'Saúde', estetica: 'Estética e Beleza', imobiliaria: 'Imobiliário',
+      servicos: 'Serviços Locais', juridico: 'Advocacia / Consultoria', outro: 'Outro'
+    };
+
+    const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+    const PHONE_RE = /^(\+?55\s?)?\(?\d{2}\)?\s?9?\d{4}-?\d{4}$/;
+
+    function sanitize(str) {
+      return String(str || '').replace(/[\u0000-\u001F\u007F]/g, '').trim();
+    }
+
+    function showFeedback(message, type) {
+      if (!feedback) return;
+      feedback.textContent = message;
+      feedback.className = 'form-feedback ' + type;
+      clearTimeout(showFeedback._t);
+      showFeedback._t = setTimeout(() => {
+        feedback.className = 'form-feedback';
+      }, 6000);
+    }
+
+    if (formContato) {
+      formContato.addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        if (this.website && this.website.value) return;
+
+        const nome = sanitize(this.nome.value);
+        const whatsapp = sanitize(this.whatsapp.value);
+        const email = sanitize(this.email.value);
+        const objetivo = this.objetivo.value;
+        const segmento = this.segmento.value;
+        const mensagem = sanitize(this.mensagem.value);
+
+        if (!nome || !whatsapp || !email || !objetivo || !segmento) {
+          showFeedback('Por favor, preencha todos os campos obrigatórios.', 'error');
+          return;
+        }
+        if (nome.length < 2 || nome.length > 80) {
+          showFeedback('Informe um nome válido.', 'error');
+          return;
+        }
+        if (!PHONE_RE.test(whatsapp.replace(/\s/g, ''))) {
+          showFeedback('Informe um WhatsApp válido com DDD (ex.: 11 91234-5678).', 'error');
+          return;
+        }
+        if (!EMAIL_RE.test(email)) {
+          showFeedback('Informe um e-mail válido.', 'error');
+          return;
+        }
+
+        let texto = 'Olá! Sou ' + nome + '.\n\n';
+        texto += '📌 Objetivo: ' + (objetivoTextos[objetivo] || objetivo) + '\n';
+        texto += '🏢 Segmento: ' + (segmentoTextos[segmento] || segmento) + '\n';
+        texto += '📧 E-mail: ' + email + '\n';
+        if (mensagem) texto += '📝 Observação: ' + mensagem + '\n';
+        texto += '\n📞 Meu WhatsApp: ' + whatsapp;
+
+        showFeedback('Tudo certo! Abrindo o WhatsApp…', 'success');
+        openWhatsApp(texto);
+        formContato.reset();
+      });
+    }
+  });
+})();
+</script>
+</body>
+</html>
